@@ -4,13 +4,20 @@
 
 
 ;; ******************* time settings *******************
-(display-time-mode 1)		  
+(display-time-mode 1)
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 
 ;; ******************* color settings *******************
-(load-theme 'wombat)	  
+(load-theme 'wombat)
 (set-cursor-color "gold1")
+
+;; ******************* start server *******************
+(server-start)
+
+;; ******************* sync copy/paste clipboard with linux x11 *******************
+(setq x-select-enable-clipboard t)
+(setq x-select-enable-primary t)
 
 
 ;; ******************* display and encoding *******************
@@ -21,7 +28,7 @@
 ; (setq default-major-mode 'text-mode)
 
 ;; hide the startup screen and messages
-(setq inhibit-startup-message t)     
+(setq inhibit-startup-message t)
 (setq gnus-inhibit-startup-message t)
 
 ;; enable to display images
@@ -32,20 +39,24 @@
 
 ;; line number settings
 (global-linum-mode t)
-(setq line-number-mode t)  
+(setq line-number-mode t)
 (setq column-number-mode t)
 (setq global-hl-line-mode nil)
 
 ;; scroll bar and menu bar settings
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)  
+(scroll-bar-mode -1)
 (menu-bar-mode -1)
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
 
 ;; match the () and []
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
+(electric-pair-mode t)
+
+;; show the whitespaces
+;; (whitespace-mode t)
 
 ;; set the width of tab = 4 spaces
 (setq default-tab-width 4)
@@ -58,12 +69,20 @@
 
 ;; disable to generate backup files
 (setq make-backup-files -1)
+(setq auto-save-default nil)
 (setq create-lockfiles -1)
 
-;; auto hightlight symbol
-; (auto-highlight-symbol-mode 1)
+;; ******************* auto hightlight symbol *******************
+(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
+(global-auto-highlight-symbol-mode t)
+(ahs-set-idle-interval 0.5)
 
-
+;; ******************* highlight symbol *******************
+(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
+(global-set-key [(control f3)] 'highlight-symbol)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
 ;; ******************* package info *******************
 
@@ -81,27 +100,27 @@
 
 ;; saving emacs sessions
 (desktop-save-mode 1)
+(save-place-mode t)
+(savehist-mode t)
 
-;; load plugins
-(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; for php mode
 (autoload 'php-mode "php-mode" "PHP editing mode" t)
 (setq shell-file-name "/bin/bash")
 (unless (package-installed-p 'ac-php )
-    (package-refresh-contents)
-    (package-install 'ac-php )
+	(package-refresh-contents)
+	(package-install 'ac-php )
 )
 (require 'cl)
 (require 'php-mode)
 (add-hook 'php-mode-hook
-    '(lambda ()
-       (auto-complete-mode t)
-       (require 'ac-php)
-       (setq ac-sources '(ac-source-php ) )
-       (yas-global-mode 1)
-       (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
-       (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
+	'(lambda ()
+	   (auto-complete-mode t)
+	   (require 'ac-php)
+	   (setq ac-sources '(ac-source-php ) )
+	   (yas-global-mode 1)
+	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
+	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
    ))
 
 ;; for scala settings
@@ -128,7 +147,7 @@
 
 ;; yasnippet
 (require 'yasnippet)
-(setq yas/prompt-functions 
+(setq yas/prompt-functions
    '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
 (yas/global-mode 1)
 (yas/minor-mode-on)
@@ -170,7 +189,7 @@
 
 
 
-;; other settings 
+;; other settings
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -185,7 +204,7 @@
  '(org-agenda-files (quote ("~/Desktop/2016test.org")))
  '(package-selected-packages
    (quote
-	(chinese-wbim ecb git-command helm-projectile restclient-helm auto-compile ac-html-angular angular-snippets ng2-mode nginx-mode ido-vertical-mode better-shell company-shell flymake-shell composer docker dockerfile-mode angular-mode emacsql-mysql git ac-php helm-ls-git helm-git-files auto-complete helm-emmet helm-git atom-dark-theme atom-one-dark-theme bash-completion sublime-themes helm web-mode smartparens restclient quickrun projectile phpunit php-mode maker-mode heroku flycheck feature-mode expand-region ensime auto-highlight-symbol ac-helm))))
+	(redis ac-emmet chinese-wbim ecb git-command helm-projectile restclient-helm auto-compile ac-html-angular angular-snippets ng2-mode nginx-mode ido-vertical-mode better-shell company-shell flymake-shell composer docker dockerfile-mode angular-mode emacsql-mysql git ac-php helm-ls-git helm-git-files auto-complete helm-emmet helm-git atom-dark-theme atom-one-dark-theme bash-completion sublime-themes helm web-mode smartparens restclient quickrun projectile phpunit php-mode maker-mode heroku flycheck feature-mode expand-region ensime auto-highlight-symbol ac-helm))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
