@@ -41,6 +41,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)  
 (menu-bar-mode -1)
+(toggle-frame-fullscreen)
 
 ;; match the () and []
 (show-paren-mode t)
@@ -57,6 +58,7 @@
 
 ;; disable to generate backup files
 (setq make-backup-files -1)
+(setq create-lockfiles -1)
 
 ;; auto hightlight symbol
 ; (auto-highlight-symbol-mode 1)
@@ -76,6 +78,12 @@
 
 
 ;; ******************* mode settings *******************
+
+;; saving emacs sessions
+(desktop-save-mode 1)
+
+;; load plugins
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; for php mode
 (autoload 'php-mode "php-mode" "PHP editing mode" t)
@@ -105,9 +113,6 @@
 (put 'scroll-left 'disabled nil)
 
 
-;; projectile mode
-; (projectile-mode t)
-
 ;; winner mode
 (winner-mode t)
 
@@ -120,7 +125,6 @@
 (ac-config-default)
 (setq ac-auto-start 1)
 (setq ac-auto-show-menu 0.1)
-
 
 ;; yasnippet
 (require 'yasnippet)
@@ -146,6 +150,13 @@
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
+
+;; projectile mode
+(projectile-mode t)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 ;; org mode settings
 (setq org-log-done 'time)
 (setq org-todo-keywords
@@ -156,11 +167,10 @@
 
 ;; ******************* other settings *******************
 
-;; load plugins
-(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 
-;; 
+
+;; other settings 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
