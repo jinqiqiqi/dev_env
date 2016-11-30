@@ -1,0 +1,17 @@
+;; Sawfish user customization -- do not edit by hand!
+;; Use the configurator instead.
+;; sawfish version 1.12.0, written Tue Nov 29 13:26:44 2016
+
+(custom-set-keymap (quote window-keymap) (quote (keymap (tab-raise-right-window . "H-ISO_Left_Tab") (iconify-window . "Super-h") (maximize-window . "Super-Up") (unmaximize-window . "Super-Down") (tab-raise-left-window . "W-ISO_Left_Tab") (raise-and-pass-through-click . "Button1-Click") (move-window-interactively . "W-Button1-Move") (popup-window-ops-menu . "W-Button2-Click") (resize-window-interactively . "M-Button3-Click"))))
+(custom-set-keymap (quote global-keymap) (quote (keymap (cabinet-switch . "C-TAB") (restart . "Super-r") (toggle-desktop . "M-C-d") (cabinet-switch . "Super-TAB") (cycle-windows . "W-TAB"))))
+(custom-set-typed-variable (quote cabinet:advance-user-keybindings) (quote ()) (quote boolean))
+(custom-set-typed-variable (quote cabinet:toggle-workspace-mode) (quote "Super-a") (quote event))
+(custom-set-typed-variable (quote Crux:normal-color) (quote ()) (quote (optional color)))
+(custom-set-typed-variable (quote Crux:show-window-icons) (quote ()) (quote boolean))
+(custom-set-typed-variable (quote Crux:button-theme) (quote platinum) (quote (choice (default "Default") (platinum "Mac OS Platinum") (macos-x "Mac OS X") (windows "MS Windows") (next "NeXTSTEP") (complete "Complete") (complete-inverse "Complete (Inverse)"))))
+(custom-set-typed-variable (quote styletab-c:titlebar-place) (quote top) (quote symbol))
+(custom-set-typed-variable (quote default-frame-style) (quote microGUI) (quote frame-style))
+(custom-set-typed-variable (quote resize-outline-mode) (quote box) (quote (choice opaque box cross elliptical draft)))
+(custom-set-typed-variable (quote move-outline-mode) (quote box) (quote (choice opaque box cross elliptical draft)))
+(custom-set-typed-variable (quote default-window-animator) (quote wireframe) (quote (choice none solid wireframe cross elliptical draft)))
+(custom-set-typed-variable (quote move-lock-when-maximized) (quote ()) (quote boolean))
