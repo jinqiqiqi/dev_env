@@ -2,6 +2,18 @@
 (setq user-full-name "Eric King")
 (setq user-mail-address "jinqiqiqi@gmail.com")
 
+;; ******************* package info *******************
+
+(require 'package)
+(add-to-list 'package-archives
+	'("marmalade". "https://marmalade-repo.org/packages/")
+	t)
+(add-to-list 'package-archives
+	'("milkbox". "http://melpa.milkbox.net/packages/")
+	t)
+(package-initialize)
+
+
 
 ;; ******************* time settings *******************
 (display-time-mode 1)
@@ -73,27 +85,16 @@
 (setq create-lockfiles -1)
 
 ;; ******************* auto hightlight symbol *******************
-(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
+(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-1.55/auto-highlight-symbol.el")
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
 ;; ******************* highlight symbol *******************
-(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
+(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-1.1/highlight-symbol.el")
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
 (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
-
-;; ******************* package info *******************
-
-(require 'package)
-(add-to-list 'package-archives
-	'("marmalade". "https://marmalade-repo.org/packages/")
-	t)
-(add-to-list 'package-archives
-	'("milkbox". "http://melpa.milkbox.net/packages/")
-	t)
-(package-initialize)
 
 
 ;; ******************* mode settings *******************

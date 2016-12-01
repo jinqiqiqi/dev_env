@@ -1,0 +1,7 @@
+#! /bin/bash
+# (c) 2000-2004 Red Hat, Inc.
+
+# WM="sawfish-xfce-session"
+fbpanel &
+fcitx -d & 
+exec /usr/bin/sawfish
