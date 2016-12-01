@@ -1,0 +1,21 @@
+(require 'sawfish.wm.ext.pager)
+(add-hook 'after-initialization-hook pager t)
+
+;; (require 'jump-or-exec)
+(bind-keys global-keymap
+	"Super-f" '(jump-or-exec "^firefox@"))
+
+
+(setq startup-programs
+	  '(
+		("fbpanel")
+		("fcitx")
+		))
+
+(mapc (lambda (program)
+		(apply start-process (make-process standard-output) program))
+	  startup-programs)
+
+(add-hook 'before-exit-hook
+		  (lambda ()
+			(mapc stop-process (active-processes))))
