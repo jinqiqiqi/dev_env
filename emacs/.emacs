@@ -85,12 +85,12 @@
 (setq create-lockfiles -1)
 
 ;; ******************* auto hightlight symbol *******************
-(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-1.55/auto-highlight-symbol.el")
+(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
 ;; ******************* highlight symbol *******************
-(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-1.1/highlight-symbol.el")
+(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
