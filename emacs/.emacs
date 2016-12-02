@@ -183,7 +183,12 @@
 	'((sequence "TODO(t)" "FEEDBACK(f!)" "VERIFY(v@/!)" "DOING(i!)" "WAIT(w@/!)" "REOPEN(r@/!)" "|" "DONE(d!)" "CANCELED(c@)" "DELEGATED(g@)")))
 
 (setq org-clock-persist 'history)
-; (org-clock-persistence-insinuate)
+;; (org-clock-persistence-insinuate)
+(add-hook 'org-mode-hook
+		  (lambda () (setq truncate-lines nil)))
+
+
+
 
 ;; ******************* other settings *******************
 

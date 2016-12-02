@@ -1,8 +1,8 @@
 ;; Sawfish user customization -- do not edit by hand!
 ;; Use the configurator instead.
-;; sawfish version 1.12.0, written Thu Dec  1 22:16:03 2016
+;; sawfish version 1.12.0, written Fri Dec  2 17:05:22 2016
 
-(custom-set-keymap (quote global-keymap) (quote (keymap (cabinet-switch . "C-TAB") (jump-or-exec . "C-S-SPC") (quit . "C-S-ESC") (run-application . "M-F2") (restart . "Super-r") (toggle-desktop . "M-C-d") (cabinet-switch . "Super-TAB") (cycle-windows . "W-TAB"))))
+(custom-set-keymap (quote global-keymap) (quote (keymap (cabinet-switch . "C-TAB") (quit . "C-S-ESC") (run-application . "M-F2") (restart . "Super-r") (toggle-desktop . "M-C-d") (cabinet-switch . "Super-TAB") (cabinet-switch . "W-TAB"))))
 (custom-set-typed-variable (quote resize-show-dimensions) (quote ()) (quote boolean))
 (custom-set-typed-variable (quote tooltips-enabled) (quote ()) (quote boolean) (quote sawfish.wm.ext.tooltips))
 (custom-set-typed-variable (quote resize-outline-mode) (quote opaque) (quote (choice opaque box cross elliptical draft)))
