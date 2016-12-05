@@ -113,7 +113,9 @@
 	(package-install 'ac-php )
 )
 (require 'cl)
+;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
+(setq ac-php-debug-flag t)
 (add-hook 'php-mode-hook
 	'(lambda ()
 	   (auto-complete-mode t)
@@ -170,6 +172,15 @@
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
+;; gtags and helm-gtags
+(gtags-mode t)								
+(global-set-key (kbd "M-g .") 'helm-gtags-find-tag)
+(global-set-key (kbd "M-g ,") 'helm-gtags-pop-stack)
+(global-set-key (kbd "M-g f") 'helm-gtags-find-files)
+(global-set-key (kbd "M-g u") 'helm-gtags-update-tags)
+(global-set-key (kbd "M-g s") 'helm-gtags-find-symbol)
+
+
 
 ;; projectile mode
 (projectile-mode t)
@@ -210,7 +221,7 @@
  '(org-agenda-files (quote ("~/Desktop/2016test.org")))
  '(package-selected-packages
    (quote
-	(redis ac-emmet chinese-wbim ecb git-command helm-projectile restclient-helm auto-compile ac-html-angular angular-snippets ng2-mode nginx-mode ido-vertical-mode better-shell company-shell flymake-shell composer docker dockerfile-mode angular-mode emacsql-mysql git ac-php helm-ls-git helm-git-files auto-complete helm-emmet helm-git atom-dark-theme atom-one-dark-theme bash-completion sublime-themes helm web-mode smartparens restclient quickrun projectile phpunit php-mode maker-mode heroku flycheck feature-mode expand-region ensime auto-highlight-symbol ac-helm))))
+	(company-php php-company ggtags gtags helm-gtags iedit company-web helm-cscope helm-flycheck magit magit-gitflow magit-svn redis ac-emmet chinese-wbim ecb git-command helm-projectile restclient-helm auto-compile ac-html-angular angular-snippets ng2-mode nginx-mode ido-vertical-mode better-shell company-shell flymake-shell composer docker dockerfile-mode angular-mode emacsql-mysql git ac-php helm-ls-git helm-git-files auto-complete helm-emmet helm-git atom-dark-theme atom-one-dark-theme bash-completion sublime-themes helm web-mode smartparens restclient quickrun projectile phpunit php-mode maker-mode heroku flycheck feature-mode expand-region ensime auto-highlight-symbol ac-helm))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

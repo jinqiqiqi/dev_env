@@ -3,7 +3,7 @@
 
 ;; (require 'jump-or-exec)
 (bind-keys global-keymap
-	"Super-f" '(jump-or-exec "^firefox@"))
+	"C-M-l" '(system "xscreensaver-command -activate"))
 
 
 (setq startup-programs
@@ -17,6 +17,7 @@
 		("synapse")
 		("synergy")
 		("teamviewer")
+		("xscreensaver")
 		))
 
 (mapc (lambda (program)
