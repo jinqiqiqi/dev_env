@@ -119,7 +119,7 @@ Plugin {
         ShowMapped = true
         ShowAllDesks = false
         tooltips = true
-        IconsOnly = false
+        IconsOnly = true
         MaxTaskWidth = 150
     }
 }
@@ -132,7 +132,7 @@ Plugin {
 Plugin {
     type = pager
     config {
-        showwallpaper = true
+        showwallpaper = false
     }
 }
 Plugin {
