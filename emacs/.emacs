@@ -53,7 +53,8 @@
 (global-linum-mode t)
 (setq line-number-mode t)
 (setq column-number-mode t)
-(setq global-hl-line-mode nil)
+(setq hl-line-mode t)
+
 
 ;; scroll bar and menu bar settings
 (toggle-scroll-bar -1)
@@ -198,6 +199,32 @@
 ;; (org-clock-persistence-insinuate)
 (add-hook 'org-mode-hook
 		  (lambda () (setq truncate-lines nil)))
+;; (setq org-cycle-separator-lines 0)
+
+;; org-capture settings
+(setq org-directory "~/MEGA/Public/TODOs/")
+(setq org-default-notes-file "~/MEGA/Public/TODOs/inbox.org")
+
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-refile-targets
+	  (quote (("~/MEGA/Public/TODOs/task.org" :maxlevel . 1)
+			  ("~/MEGA/Public/TODOs/project.org" :level . 2)
+			  ("~/MEGA/Public/TODOs/finished.org" :level . 2)
+			  ("~/MEGA/Public/TODOs/trash.org" :level . 2)
+			  )))
+
+(setq org-capture-templates
+	  (quote (("i" "Inbox" entry (file "~/MEGA/Public/TODOs/inbox.org")
+			   "* TODO %?\n%U\n%a\n")
+			  ("n" "Note" entry (file "~/MEGA/Public/TODOs/note.org")
+			   "* %?\n%T\n")
+			  ("t" "Task" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Tasks")
+			   "* TODO %?\n%T\n")
+			  ("d" "Idea" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Ideas")
+			   "* TODO %?\n%T\n")
+			  
+			  )))
 
 
 
@@ -219,10 +246,12 @@
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(make-backup-files nil)
- '(org-agenda-files (quote ("~/Desktop/2016test.org")))
+ '(org-agenda-files
+   (quote
+	("~/MEGA/Public/MyJobs/HappyPingpang/TODOs/201611.org" "~/Desktop/2016test.org")))
  '(package-selected-packages
    (quote
-	(c-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
+	(cal-china-x c-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
