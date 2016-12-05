@@ -175,6 +175,7 @@
 ;; gtags and helm-gtags
 (gtags-mode t)								
 (global-set-key (kbd "M-g .") 'helm-gtags-find-tag)
+(global-set-key (kbd "M-g r") 'helm-gtags-find-rtag)
 (global-set-key (kbd "M-g ,") 'helm-gtags-pop-stack)
 (global-set-key (kbd "M-g f") 'helm-gtags-find-files)
 (global-set-key (kbd "M-g u") 'helm-gtags-update-tags)
