@@ -207,19 +207,19 @@
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-agenda-files (list "~/MEGA/Public/TODOs/task.org"
+(setq org-agenda-files (list "~/MEGA/Public/TODOs/finished.org"
+							 "~/MEGA/Public/TODOs/task.org"
 							 "~/MEGA/Public/TODOs/project.org"
 							 "~/MEGA/Public/TODOs/note.org"
-							 "~/MEGA/Public/TODOs/inbox.org"))
+							 "~/MEGA/Public/TODOs/inbox.org"
+							 "~/MEGA/Public/TODOs/trash.org"))
 
 
 (setq org-refile-targets
-	  (quote (("~/MEGA/Public/TODOs/task.org" :maxlevel . 2)
-			  ("~/MEGA/Public/TODOs/project.org" :level . 2)
-			  ("~/MEGA/Public/TODOs/finished.org" :level . 2)
-			  ("~/MEGA/Public/TODOs/trash.org" :level . 2)
+	  (quote ((nil :maxlevel . 2)
+			  (org-agenda-files :maxlevel . 2)
 			  )))
-
+;; (setq org-refile-use-outline-path t)
 (setq org-capture-templates
 	  (quote (("i" "Inbox" entry (file "~/MEGA/Public/TODOs/inbox.org")
 			   "* TODO %?\n%U\n%a\n")
