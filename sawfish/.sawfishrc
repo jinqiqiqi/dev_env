@@ -3,7 +3,7 @@
 
 ;; (require 'jump-or-exec)
 (bind-keys global-keymap
-	"C-M-l" '(system "xscreensaver-command -activate"))
+	"Super-L" '(system "xscreensaver-command -activate"))
 
 
 (setq startup-programs
