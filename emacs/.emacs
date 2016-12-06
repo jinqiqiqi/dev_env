@@ -206,6 +206,9 @@
 (setq org-default-notes-file "~/MEGA/Public/TODOs/inbox.org")
 
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c a") 'org-agenda-list)
+(global-set-key (kbd "C-c t") 'org-todo-list)
+
 
 (setq org-agenda-files (list "~/MEGA/Public/TODOs/finished.org"
 							 "~/MEGA/Public/TODOs/task.org"
