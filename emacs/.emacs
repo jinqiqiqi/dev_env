@@ -223,12 +223,15 @@
 (setq org-capture-templates
 	  (quote (("i" "Inbox" entry (file "~/MEGA/Public/TODOs/inbox.org")
 			   "* TODO %?\n%U\n%a\n")
-			  ("n" "Note" entry (file "~/MEGA/Public/TODOs/note.org")
-			   "* %?\n%T\n")
+			  ("n" "Note" entry (file+datetree+prompt "~/MEGA/Public/TODOs/note.org")
+			   "* %?\nEntered on %U\n %i\n %a\n")
 			  ("t" "Task" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Tasks")
 			   "* TODO %?\n%T\n")
 			  ("d" "Idea" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Ideas")
 			   "* TODO %?\n%T\n")
+			  ("p" "Project" entry (file "~/MEGA/Public/TODOs/project.org")
+			   "* TODO %?\n%T\n")
+			  
 			  
 			  )))
 
@@ -254,7 +257,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(pomodoro company-php php-company ggtags gtags helm-gtags iedit company-web helm-cscope helm-flycheck magit magit-gitflow magit-svn redis ac-emmet chinese-wbim ecb git-command helm-projectile restclient-helm auto-compile ac-html-angular angular-snippets ng2-mode nginx-mode ido-vertical-mode better-shell company-shell flymake-shell composer docker dockerfile-mode angular-mode emacsql-mysql git ac-php helm-ls-git helm-git-files auto-complete helm-emmet helm-git atom-dark-theme atom-one-dark-theme bash-completion sublime-themes helm web-mode smartparens restclient quickrun projectile phpunit php-mode maker-mode heroku flycheck feature-mode expand-region ensime auto-highlight-symbol ac-helm))))
+	(ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
