@@ -250,7 +250,7 @@
 			  ("d" "Idea" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Ideas")
 			   "* TODO %? %^G\n%T\n")
 			  ("p" "Project" entry (file "~/MEGA/Public/TODOs/project.org")
-			   "* TODO %? %^G\n%T\n")
+			   "* TODO %? %^G:Proj:\n%T\n")
 			  ("j" "Journal" entry (file+headline "~/MEGA/Public/TODOs/finished.org" "Journal")
 			   "* %? %^G\n%T\n%a\n")
 			  )))
