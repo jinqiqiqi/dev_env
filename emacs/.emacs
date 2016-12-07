@@ -24,6 +24,7 @@
 (load-theme 'wombat)
 (set-cursor-color "gold1")
 
+
 ;; ******************* start server *******************
 (server-start)
 
@@ -53,7 +54,13 @@
 (global-linum-mode t)
 (setq line-number-mode t)
 (setq column-number-mode t)
-(setq hl-line-mode t)
+
+;; highlight current line without underline
+(global-hl-line-mode t)
+;; (set-face-background 'hl-line "#3e444F")
+(set-face-background 'hl-line "#333300")
+(set-face-foreground 'highlight nil)
+(set-face-underline 'highlight nil)
 
 
 ;; scroll bar and menu bar settings
@@ -85,6 +92,17 @@
 (setq auto-save-default nil)
 (setq create-lockfiles -1)
 
+;; set emacs title
+(setq frame-title-format
+	  '((:eval (if (buffer-file-name)
+				   (abbreviate-file-name (buffer-file-name))
+				 "%b"))
+		(:eval (if (buffer-modified-p)
+				   " [*]"))
+		" - (%m) @ Emacs")
+	  )
+
+
 ;; ******************* auto hightlight symbol *******************
 (require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
 (global-auto-highlight-symbol-mode t)
@@ -112,8 +130,11 @@
 (unless (package-installed-p 'ac-php )
 	(package-refresh-contents)
 	(package-install 'ac-php )
-)
+	)
+
+;; require common lisp
 (require 'cl)
+
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
 (setq ac-php-debug-flag t)
@@ -242,6 +263,7 @@
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 
+
 ;; ******************* other settings *******************
 
 
@@ -261,7 +283,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
+	(sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
