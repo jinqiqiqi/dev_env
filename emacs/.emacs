@@ -57,8 +57,8 @@
 
 ;; highlight current line without underline
 (global-hl-line-mode t)
-;; (set-face-background 'hl-line "#3e444F")
-(set-face-background 'hl-line "#333300")
+(set-face-background 'hl-line "#3e444F")
+;; (set-face-background 'hl-line "#333300")
 (set-face-foreground 'highlight nil)
 (set-face-underline 'highlight nil)
 
