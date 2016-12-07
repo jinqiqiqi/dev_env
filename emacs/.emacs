@@ -246,7 +246,7 @@
 			  ("n" "Note" entry (file+datetree "~/MEGA/Public/TODOs/note.org")
 			   "* %? %^G\n%U\n %i\n %a\n")
 			  ("t" "Task" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Tasks")
-			   "* TODO %? %^G\n%x\n%T\n")
+			   "* TODO %? %^G\n%T\n")
 			  ("d" "Idea" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Ideas")
 			   "* TODO %? %^G\n%T\n")
 			  ("p" "Project" entry (file "~/MEGA/Public/TODOs/project.org")
