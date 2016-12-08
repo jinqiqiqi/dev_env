@@ -2,6 +2,9 @@
 (setq user-full-name "Eric King")
 (setq user-mail-address "jinqiqiqi@gmail.com")
 
+;; require common lisp
+(require 'cl)
+
 ;; ******************* package info *******************
 
 (require 'package)
@@ -132,8 +135,10 @@
 	(package-install 'ac-php )
 	)
 
-;; require common lisp
-(require 'cl)
+;; php settings
+
+
+
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
@@ -146,7 +151,18 @@
 	   (yas-global-mode 1)
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
-   ))
+	   ))
+(add-hook 'php-mode-hook 'my-php-mode-stuff)
+(defun my-php-mode-stuff ()
+  (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
+
+(defun my-php-function-lookup ()
+  (interactive)
+  (let ((symbol (symbol-at-point)))
+	(if (not symbol)
+		(message "No Symbol selected")
+	  (browse-url (concat "http://php.net/manual-look.php?scope=quickref&pattern="
+						   (symbol-name symbol))))))
 
 ;; for scala settings
 ;; settings for exec path
@@ -283,7 +299,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
+	(geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
