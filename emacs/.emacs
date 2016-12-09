@@ -16,7 +16,12 @@
 	t)
 (package-initialize)
 
+<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
 ;; load path settings
+=======
+
+;; add load-path to load packages
+>>>>>>> temp
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; ******************* time settings *******************
@@ -108,11 +113,19 @@
 
 
 ;; ******************* auto hightlight symbol *******************
+<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
+=======
+;; (require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
+>>>>>>> temp
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
 ;; ******************* highlight symbol *******************
+<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
+=======
+;; (require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
+>>>>>>> temp
 (require 'highlight-symbol)
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
@@ -159,22 +172,23 @@
 	'(lambda ()
 	   (auto-complete-mode t)
 	   (require 'ac-php)
-	   (setq ac-sources '(ac-source-php ) )
+	   (setq ac-sources '(ac-source-php) )
 	   (yas-global-mode 1)
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
 	   ))
-(add-hook 'php-mode-hook 'my-php-mode-stuff)
-(defun my-php-mode-stuff ()
-  (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
 
-(defun my-php-function-lookup ()
-  (interactive)
-  (let ((symbol (symbol-at-point)))
-	(if (not symbol)
-		(message "No Symbol selected")
-	  (browse-url (concat "http://php.net/manual-look.php?scope=quickref&pattern="
-						   (symbol-name symbol))))))
+;; (add-hook 'php-mode-hook 'my-php-mode-stuff)
+;; (defun my-php-mode-stuff ()
+;;   (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
+
+;; (defun my-php-function-lookup ()
+;;   (interactive)
+;;   (let ((symbol (symbol-at-point)))
+;; 	(if (not symbol)
+;; 		(message "No Symbol selected")
+;; 	  (browse-url (concat "http://php.net/manual-look.php?scope=quickref&pattern="
+;;						   (symbol-name symbol))))))
 
 ;; for scala settings
 ;; settings for exec path
@@ -306,12 +320,18 @@
  '(custom-safe-themes
    (quote
 	("9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" default)))
+ '(global-auto-complete-mode t)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(make-backup-files nil)
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
+<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
 	(php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
+=======
+	(php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
+>>>>>>> temp
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
