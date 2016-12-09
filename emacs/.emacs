@@ -137,7 +137,18 @@
 
 ;; php settings
 
+;; settings for xdebug
+(autoload 'geben "geben" "DBGp protocol frontend, a script debugger" t)
+(defun my-php-debug ()
+  "Run current PHP script for debugging with geben"
+  (interactive)
+  (call-interactively 'geben)
+  (shell-command
+   (concat
+	"XDEBUG_CONFIG='idekey=my-php' php "
+	(buffer-file-name) " &")))
 
+(global-set-key [f5] 'my-php-debug)
 
 
 ;; It seems the blow settings are not working for some reason.
