@@ -4,6 +4,12 @@
 ;; (require 'jump-or-exec)
 (bind-keys global-keymap
 	"Super-L" '(system "xscreensaver-command -activate"))
+(bind-keys global-keymap
+		   "XF86AudioLowerVolume" '(system "amixer sset Master 5%-"))
+(bind-keys global-keymap
+		   "XF86AudioRaiseVolume" '(system "amixer sset Master 5%+"))
+(bind-keys global-keymap
+		   "XF86AudioMute" '(system "amixer sset Master 0%"))
 
 
 (setq startup-programs
