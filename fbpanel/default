@@ -126,18 +126,6 @@ Plugin {
 Plugin {
     type = space
     config {
-        size = 15
-    }
-}
-Plugin {
-    type = pager
-    config {
-        showwallpaper = false
-    }
-}
-Plugin {
-    type = space
-    config {
         size = 10
     }
 }
@@ -183,11 +171,13 @@ Plugin {
     }
 }
 Plugin {
-    type = dclock
+    type = tclock
     config {
-        ShowSeconds = false
+        ShowSeconds = true
         HoursView = 24
         TooltipFmt = %A %x
+		ShowCalendar = false
+		ClockFmt = %a %T %x
     }
 }
 Plugin {
