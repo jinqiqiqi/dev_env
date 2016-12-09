@@ -16,7 +16,8 @@
 	t)
 (package-initialize)
 
-
+;; load path settings
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; ******************* time settings *******************
 (display-time-mode 1)
@@ -107,12 +108,12 @@
 
 
 ;; ******************* auto hightlight symbol *******************
-(require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
+(require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
 ;; ******************* highlight symbol *******************
-(require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
+(require 'highlight-symbol)
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
@@ -149,7 +150,6 @@
 	(buffer-file-name) " &")))
 
 (global-set-key [f5] 'my-php-debug)
-
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
@@ -192,7 +192,7 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/auto-complete.el")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict/")
 (ac-config-default)
 (setq ac-auto-start 1)
 (setq ac-auto-show-menu 0.1)
