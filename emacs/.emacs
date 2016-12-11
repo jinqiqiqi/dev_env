@@ -5,23 +5,30 @@
 ;; require common lisp
 (require 'cl)
 
+;; exchange the alt and super keys for mac ox
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+
 ;; ******************* package info *******************
 
 (require 'package)
-(add-to-list 'package-archives
-	'("marmalade". "https://marmalade-repo.org/packages/")
-	t)
-(add-to-list 'package-archives
-	'("milkbox". "http://melpa.milkbox.net/packages/")
-	t)
+;; (add-to-list 'package-archives
+;; 	'("marmalade". "https://marmalade-repo.org/packages/")
+;;	t)
+;; (add-to-list 'package-archives
+;;	'("milkbox". "http://melpa.milkbox.net/packages/")
+;; 	t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+						 ("org" . "http://orgmode.org/elpa/")
+						 ("melpa" . "https://melpa.org/packages/")
+ 						 ("melpa-stable" . "https://stable.melpa.org/packages"))
+	  Package-archive-priorities '(("melpa-stable". 1)))
 (package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
-<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
-;; load path settings
-=======
-
-;; add load-path to load packages
->>>>>>> temp
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; ******************* time settings *******************
@@ -52,6 +59,7 @@
 ;; hide the startup screen and messages
 (setq inhibit-startup-message t)
 (setq gnus-inhibit-startup-message t)
+(setq sentence-end-double-space nil)
 
 ;; enable to display images
 (auto-image-file-mode t)
@@ -113,19 +121,11 @@
 
 
 ;; ******************* auto hightlight symbol *******************
-<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
-=======
-;; (require 'auto-highlight-symbol "~/.emacs.d/elpa/auto-highlight-symbol-20130313.243/auto-highlight-symbol.el")
->>>>>>> temp
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
 ;; ******************* highlight symbol *******************
-<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
-=======
-;; (require 'highlight-symbol "~/.emacs.d/elpa/highlight-symbol-20160102.1209/highlight-symbol.el")
->>>>>>> temp
 (require 'highlight-symbol)
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
@@ -152,18 +152,18 @@
 ;; php settings
 
 ;; settings for xdebug
-(autoload 'geben "geben" "DBGp protocol frontend, a script debugger" t)
-(defun my-php-debug ()
-  "Run current PHP script for debugging with geben"
-  (interactive)
-  (call-interactively 'geben)
+;; (autoload 'geben "geben" "DBGp protocol frontend, a script debugger" t)
+;; (defun my-php-debug ()
+;;   "Run current PHP script for debugging with geben"
+;;   (interactive)
+;;   (call-interactively 'geben)
 ;;  (shell-command
 ;;   (concat
 ;;	"XDEBUG_CONFIG='idekey=my-php' php "
 ;;	(buffer-file-name) " &"))
-  )
+;;   )
 
-(global-set-key [f5] 'my-php-debug)
+;; (global-set-key [f5] 'my-php-debug)
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
@@ -194,9 +194,16 @@
 ;; settings for exec path
 (setq exec-path (append exec-path (list "/usr/local/bin/")))
 (require 'scala-mode)
+
+
+;; (use-package ensime
+;;  			 :ensure t
+;;  			 :pin melpa-stable)
 (require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (put 'scroll-left 'disabled nil)
+;; (setq ensime-startup-notification nil)
+;; (setq ensime-startup-snapshot-notification nil)
+
 
 
 ;; winner mode
@@ -324,14 +331,9 @@
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(make-backup-files nil)
- '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-<<<<<<< 2e4da6bd5724bd98f417a3ad92f61b3433d97fa1
-	(php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
-=======
-	(php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql ensime expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes web-mode))))
->>>>>>> temp
+	(use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
