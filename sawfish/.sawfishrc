@@ -2,8 +2,7 @@
 ;; (add-hook 'after-initialization-hook pager t)
 (setq load-path (cons "/usr/share/sawfish/lisp/sawfish/wm/commands/"
 					  load-path))
-
-
+(require 'jump-or-exec)
 (require 'rep.io.timers)
 
 (defun eric-display-msg (message &optional seconds)
@@ -27,7 +26,6 @@
 	  (expand-list-match "\\1 [\\2]"))))
 
 
-(require 'jump-or-exec)
 (bind-keys global-keymap
 		   "Super-O" '(jump-or-exec "Opera"
 									(lambda ()

@@ -29,6 +29,7 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; load path settings
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; ******************* time settings *******************
@@ -143,6 +144,9 @@
 
 ;; for php mode
 (autoload 'php-mode "php-mode" "PHP editing mode" t)
+
+(add-to-list 'auto-mode-alist '("\\.ctp" . php-mode))
+
 (setq shell-file-name "/bin/bash")
 (unless (package-installed-p 'ac-php )
 	(package-refresh-contents)
@@ -177,6 +181,9 @@
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
 	   ))
+(add-hook 'php-mode-hook 'my-php-mode-stuff)
+(defun my-php-mode-stuff ()
+  (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
 
 ;; (add-hook 'php-mode-hook 'my-php-mode-stuff)
 ;; (defun my-php-mode-stuff ()
@@ -200,6 +207,7 @@
 ;;  			 :ensure t
 ;;  			 :pin melpa-stable)
 (require 'ensime)
+;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (put 'scroll-left 'disabled nil)
 ;; (setq ensime-startup-notification nil)
 ;; (setq ensime-startup-snapshot-notification nil)
