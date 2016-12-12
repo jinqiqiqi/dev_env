@@ -74,7 +74,7 @@
 
 ;; application keymacros
 (define apps-keymap (make-keymap))
-(bind-keys global-keymap "Super-e" apps-keymap)
+(bind-keys global-keymap "Super-j" apps-keymap)
 (bind-keys apps-keymap
 		   "o" '(jump-or-exec "Opera" "opera" t)
 		   "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate" t)
