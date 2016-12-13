@@ -15,15 +15,15 @@
    (or seconds 3)))
 
 
-(defun volume-change (raiseOrDown)
+(defun volume-change (ops exps)
   (interactive)
   (let* ((res-stream (make-string-output-stream))
 		 (proc (make-process res-stream))
 		 (res-str))
-	(call-process proc nil "amixer" "sset" "Master" (concat "5%" raiseOrDown))
+	(call-process proc nil "amixer" "sset" "Master" ops)
 	(setq res-str (get-output-stream-string res-stream))
-	(string-match ".*?\\[([^%]*)%\\].*" res-str)
-	(eric-display-msg (concat "Volume: " (expand-last-match "\\1") "%") 5)))
+	(string-match exps res-str)
+	(eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
 	
 (defun eric-joe (app keywords msg)
   (interactive)
@@ -51,13 +51,13 @@
 (bind-keys global-keymap
 		   "Super-L" '((system "xscreensaver-command -activate")
 					   (eric-display-msg "Locking workstation...")))
+
 (bind-keys global-keymap
-		   "XF86AudioLowerVolume" '(volume-change "-"))
+		   "XF86AudioLowerVolume" '(volume-change "5%-" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "XF86AudioRaiseVolume" '(volume-change "+"))
+		   "XF86AudioRaiseVolume" '(volume-change "5%+" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "XF86AudioMute" '((eric-display-msg "Sound Mute Toggle")
-							 (system "amixer set Master toggle")))
+		   "XF86AudioMute" '(volume-change "toggle" ".*\\[(on|off)\\].*"))
 
 ;; application keymacros
 (define apps-keymap (make-keymap))
