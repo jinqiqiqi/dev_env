@@ -8,15 +8,15 @@ Global {
     transparent = false
     tintcolor = #ffffff
     alpha = 28
-    setdocktype = true
-    setpartialstrut = true
+    setdocktype = false
+    setpartialstrut = false
     autohide = false
     heightWhenHidden = 2
     roundcorners = false
     roundcornersradius = 7
     layer = above
     MaxElemHeight = 32
-    setlayer = false
+    setlayer = true
 }
 Plugin {
     type = space
@@ -176,8 +176,8 @@ Plugin {
         ShowSeconds = true
         HoursView = 24
         TooltipFmt = %A %x
-		ShowCalendar = false
-		ClockFmt = %a %T %x
+        ShowCalendar = false
+        ClockFmt = %a %T %x
     }
 }
 Plugin {

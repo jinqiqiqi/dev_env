@@ -5,6 +5,7 @@
 (require 'jump-or-exec)
 (require 'rep.io.timers)
 
+;; display message
 (defun eric-display-msg (message &optional seconds)
   "display message for seconds seconds and make the message disappeared."
   (interactive)
@@ -14,7 +15,7 @@
 	 (display-message))
    (or seconds 3)))
 
-
+;; volume change function
 (defun volume-change (ops exps)
   (interactive)
   (let* ((res-stream (make-string-output-stream))
@@ -25,6 +26,7 @@
 	(string-match exps res-str)
 	(eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
 	
+;; eric's jump or exec function
 (defun eric-joe (app keywords msg)
   (interactive)
   (jump-or-exec keywords
@@ -36,6 +38,7 @@
 				   (display-window wind)
 				   )))
 
+;; short keys to jump or exec applications.
 (bind-keys global-keymap
 		   "Super-O" '(eric-joe "opera &" "Opera" "starting Opera..."))
 
@@ -49,9 +52,16 @@
 		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox" "starting Firefox..."))
 
 (bind-keys global-keymap
+		   "Super-D" '(eric-joe "stardict &" "StarDict" "starting StarDict..."))
+
+(bind-keys global-keymap
+		   "Super-B" '(eric-joe "libreoffice &" "LibreOffice" "starting LibreOffice..."))
+
+(bind-keys global-keymap
 		   "Super-L" '((system "xscreensaver-command -activate")
 					   (eric-display-msg "Locking workstation...")))
 
+;; bind keys for volume adjustment.
 (bind-keys global-keymap
 		   "XF86AudioLowerVolume" '(volume-change "5%-" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
@@ -63,17 +73,17 @@
 (define apps-keymap (make-keymap))
 (bind-keys global-keymap "Super-j" apps-keymap)
 (bind-keys apps-keymap
-		   "o" '(jump-or-exec "Opera" "opera" t)
+		   "o" '(jump-or-exec "Opera" "opera &" t)
 		   "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate" t)
-		   "t" '(jump-or-exec ":~" "gnome-terminal" t)
-		   "d" '(jump-or-exec "StarDict" "stardict" t)
-		   "e" '(jump-or-exec "Emacs" "emacs" t)
-		   "k" '(jump-or-exec "Skype" "skype" t)
-		   "b" '(jump-or-exec "LibreOffice" "libreoffice" t)
-		   "f" '(jump-or-exec "Firefox" "firefox" t)
-		   "y" '(jump-or-exec "Synergy" "synergy" t)
-		   "v" '(jump-or-exec "TeamViewer" "teamviewer" t)
-		   "r" '(jump-or-exec "GNOME Commander" "gnome-commander" t)
+		   "t" '(jump-or-exec ":~" "gnome-terminal &" t)
+		   "d" '(jump-or-exec "StarDict" "stardict &" t)
+		   "e" '(jump-or-exec "Emacs" "emacs &" t)
+		   "k" '(jump-or-exec "Skype" "skype &" t)
+		   "b" '(jump-or-exec "LibreOffice" "libreoffice &" t)
+		   "f" '(jump-or-exec "Firefox" "firefox &" t)
+		   "y" '(jump-or-exec "Synergy" "synergy &" t)
+		   "v" '(jump-or-exec "TeamViewer" "teamviewer &" t)
+		   "r" '(jump-or-exec "GNOME Commander" "gnome-commander &" t)
 		   )
 
 (setq startup-programs
