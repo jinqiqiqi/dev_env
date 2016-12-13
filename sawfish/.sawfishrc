@@ -25,51 +25,39 @@
 	(string-match ".*?\\[([^%]*)%\\].*" res-str)
 	(eric-display-msg (concat "Volume: " (expand-last-match "\\1") "%") 5)))
 	
-
+(defun eric-joe (app keywords msg)
+  (interactive)
+  (jump-or-exec keywords
+				 (lambda()
+				   (eric-display-msg msg)
+				   (system app)
+				   "sleep 10")
+				 (lambda(wind)
+				   (display-window wind)
+				   )))
 
 (bind-keys global-keymap
-		   "Super-O" '(jump-or-exec "Opera"
-									(lambda ()
-									  (eric-display-msg "starting Opera...")
-									  (system "opera &")
-									  "sleep 10")
-									(lambda (wind)
-									  (display-window wind))))
+		   "Super-O" '(eric-joe "opera &" "Opera" "starting Opera..."))
 
 (bind-keys global-keymap
-		   "Super-T" '(jump-or-exec ":~"
-									(lambda ()
-									  (eric-display-msg "starting Terminal...")
-									  (system "gnome-terminal &")
-									  "sleep 10")
-									(lambda (wind)
-									  (display-window wind))))
+		   "Super-T" '(eric-joe "gnome-terminal &" ":~" "starting Terminal..."))
+
 (bind-keys global-keymap
-		   "Super-E" '(jump-or-exec "Emacs"
-									(lambda ()
-									  (eric-display-msg "starting Emacs...")
-									  (system "emacs &")
-									  "sleep 10")
-									(lambda (wind)
-									  (display-window wind))))
+		   "Super-E" '(eric-joe "emacs &" "Emacs" "starting Emacs..."))
 
-
-
-
+(bind-keys global-keymap
+		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox" "starting Firefox..."))
 
 (bind-keys global-keymap
 		   "Super-L" '((system "xscreensaver-command -activate")
 					   (eric-display-msg "Locking workstation...")))
 (bind-keys global-keymap
-		   "XF86AudioLowerVolume"
-		   '(volume-change "-"))
+		   "XF86AudioLowerVolume" '(volume-change "-"))
 (bind-keys global-keymap
-		   "XF86AudioRaiseVolume"
-		   '(volume-change "+"))
+		   "XF86AudioRaiseVolume" '(volume-change "+"))
 (bind-keys global-keymap
-		   "XF86AudioMute"
-		   '((eric-display-msg "Sound Mute Toggle")
-			 (system "amixer set Master toggle")))
+		   "XF86AudioMute" '((eric-display-msg "Sound Mute Toggle")
+							 (system "amixer set Master toggle")))
 
 ;; application keymacros
 (define apps-keymap (make-keymap))
