@@ -8,8 +8,8 @@ Global {
     transparent = false
     tintcolor = #ffffff
     alpha = 28
-    setdocktype = false
-    setpartialstrut = false
+    setdocktype = true
+    setpartialstrut = true
     autohide = false
     heightWhenHidden = 2
     roundcorners = false
