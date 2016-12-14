@@ -51,7 +51,7 @@
 
 
 ;; ******************* display and encoding *******************
-(set-default-font "DejaVu Sans Mono-10")
+(set-default-font "DejaVu Sans Mono-11")
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
 
@@ -360,3 +360,5 @@
 (require 'sdcv)
 (global-set-key (kbd "C-x t C-d") 'sdcv-search-input+)
 (global-set-key (kbd "C-x t d") 'sdcv-search-pointer+)
+
+(global-set-key (kbd "C-x v") 'eval-buffer)
