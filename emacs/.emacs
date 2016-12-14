@@ -171,7 +171,7 @@
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
-(setq ac-php-debug-flag t)
+(setq ac-php-debug-flag nil)
 (add-hook 'php-mode-hook
 	'(lambda ()
 	   (auto-complete-mode t)
