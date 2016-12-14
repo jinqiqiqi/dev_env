@@ -51,7 +51,7 @@
 
 
 ;; ******************* display and encoding *******************
-(set-default-font "DejaVu Sans Mono-12")
+(set-default-font "DejaVu Sans Mono-10")
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
 

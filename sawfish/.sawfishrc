@@ -1,7 +1,13 @@
 ;; (require 'sawfish.wm.ext.pager)
 ;; (add-hook 'after-initialization-hook pager t)
+
 (setq load-path (cons "/usr/share/sawfish/lisp/sawfish/wm/commands/"
 					  load-path))
+;; (require 'backgrounds)
+;; (add-hook 'after-initialization-hook workspace-background-hook)
+;; (add-hook 'enter-workspace-hook workspace-background-hook)
+;; (add-hook 'workspace-state-change-hook workspace-background-hook)
+
 (require 'jump-or-exec)
 (require 'rep.io.timers)
 
@@ -16,7 +22,7 @@
    (or seconds 3)))
 
 ;; volume change function
-(defun volume-change (ops exps)
+(defun eric-volume (ops exps)
   (interactive)
   (let* ((res-stream (make-string-output-stream))
 		 (proc (make-process res-stream))
@@ -27,11 +33,11 @@
 	(eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
 	
 ;; eric's jump or exec function
-(defun eric-joe (app keywords msg)
+(defun eric-joe (app keywords)
   (interactive)
   (jump-or-exec keywords
 				 (lambda()
-				   (eric-display-msg msg)
+				   (eric-display-msg (concat "starting " keywords "...." ))
 				   (system app)
 				   "sleep 10")
 				 (lambda(wind)
@@ -40,34 +46,48 @@
 
 ;; short keys to jump or exec applications.
 (bind-keys global-keymap
-		   "Super-O" '(eric-joe "opera &" "Opera" "starting Opera..."))
+		   "Super-O" '(eric-joe "opera &" "Opera"))
 
 (bind-keys global-keymap
-		   "Super-T" '(eric-joe "gnome-terminal &" ":~" "starting Terminal..."))
+		   "Super-M" '(eric-joe "gnome-terminal &" ":~"))
 
 (bind-keys global-keymap
-		   "Super-E" '(eric-joe "emacs &" "Emacs" "starting Emacs..."))
+		   "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
 
 (bind-keys global-keymap
-		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox" "starting Firefox..."))
+		   "Super-E" '(eric-joe "emacs &" "@ Emacs"))
 
 (bind-keys global-keymap
-		   "Super-D" '(eric-joe "stardict &" "StarDict" "starting StarDict..."))
+		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox"))
 
 (bind-keys global-keymap
-		   "Super-B" '(eric-joe "libreoffice &" "LibreOffice" "starting LibreOffice..."))
+		   "Super-D" '(eric-joe "stardict &" "StarDict"))
+
+(bind-keys global-keymap
+		   "Super-B" '(eric-joe "libreoffice &" "LibreOffice"))
+
+(bind-keys global-keymap
+		   "Super-I" '(eric-joe "xmind &" ".xmind"))
+
+(bind-keys global-keymap
+		   "Super-Y" '(eric-joe "synergy &" "Synergy"))
+
+(bind-keys global-keymap
+		   "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
+
 
 (bind-keys global-keymap
 		   "Super-L" '((system "xscreensaver-command -activate")
 					   (eric-display-msg "Locking workstation...")))
 
+
 ;; bind keys for volume adjustment.
 (bind-keys global-keymap
-		   "XF86AudioLowerVolume" '(volume-change "5%-" ".*?\\[([^%]*%)\\].*"))
+		   "Super-[" '(eric-volume "5%-" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "XF86AudioRaiseVolume" '(volume-change "5%+" ".*?\\[([^%]*%)\\].*"))
+		   "Super-]" '(eric-volume "5%+" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "XF86AudioMute" '(volume-change "toggle" ".*\\[(on|off)\\].*"))
+		   "Super-\\" '(eric-volume "toggle" ".*\\[(on|off)\\].*"))
 
 ;; application keymacros
 (define apps-keymap (make-keymap))
