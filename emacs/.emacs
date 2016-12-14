@@ -355,3 +355,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; (require 'showtip)
+(require 'sdcv)
+(global-set-key (kbd "C-x t C-d") 'sdcv-search-input+)
+(global-set-key (kbd "C-x t d") 'sdcv-search-pointer+)
