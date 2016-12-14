@@ -75,9 +75,14 @@
 (bind-keys global-keymap
 		   "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
 
+(bind-keys global-keymap
+		   "Super-U" '(eric-joe "shutter &" "Shutter"))
 
 (bind-keys global-keymap
-		   "Super-L" '((system "xscreensaver-command -activate")
+		   "Super-P" '(eric-joe "gimp &" "GIMP"))
+
+(bind-keys global-keymap
+		   "Super-L" '((system "xscreensaver-command -activate & ")
 					   (eric-display-msg "Locking workstation...")))
 
 
@@ -94,7 +99,7 @@
 (bind-keys global-keymap "Super-j" apps-keymap)
 (bind-keys apps-keymap
 		   "o" '(jump-or-exec "Opera" "opera &" t)
-		   "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate" t)
+		   "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate &" t)
 		   "t" '(jump-or-exec ":~" "gnome-terminal &" t)
 		   "d" '(jump-or-exec "StarDict" "stardict &" t)
 		   "e" '(jump-or-exec "Emacs" "emacs &" t)
