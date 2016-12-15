@@ -184,10 +184,10 @@
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
 	   ))
-(add-hook 'php-mode-hook 'my-php-mode-stuff)
-(defun my-php-mode-stuff ()
-  (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
-
+;; (add-hook 'php-mode-hook 'my-php-mode-stuff)
+;; (defun my-php-mode-stuff ()
+;;   (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
+;; 
 ;; (add-hook 'php-mode-hook 'my-php-mode-stuff)
 ;; (defun my-php-mode-stuff ()
 ;;   (global-set-key (kbd "C-M-'") 'my-php-function-lookup))
@@ -205,12 +205,14 @@
 (setq exec-path (append exec-path (list "/usr/local/bin/")))
 (require 'scala-mode)
 
-
 ;; (use-package ensime
 ;;  			 :ensure t
 ;;  			 :pin melpa-stable)
 (require 'ensime)
-;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook '(lambda()
+							  (yas-minor-mode-on)))
+
 (put 'scroll-left 'disabled nil)
 (setq ensime-startup-notification nil)
 (setq ensime-startup-snapshot-notification nil)
