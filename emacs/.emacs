@@ -33,7 +33,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; ******************* time settings *******************
-(display-time-mode 1)
+(display-time-mode t)
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 
@@ -94,7 +94,7 @@
 (electric-pair-mode t)
 
 ;; show the whitespaces
-;; (whitespace-mode t)
+;; (whitespace-mode -1)
 
 ;; set the width of tab = 4 spaces
 (setq default-tab-width 4)
@@ -107,7 +107,7 @@
 
 ;; disable to generate backup files
 (setq make-backup-files -1)
-(setq auto-save-default nil)
+(setq auto-save-default -1)
 (setq create-lockfiles -1)
 
 ;; set emacs title
@@ -126,8 +126,8 @@
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
-;; ******************* highlight symbol *******************
 (require 'highlight-symbol)
+;; ******************* highlight symbol *******************
 (global-set-key [(control f3)] 'highlight-symbol)
 (global-set-key [f3] 'highlight-symbol-next)
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
@@ -141,6 +141,9 @@
 (save-place-mode t)
 (savehist-mode t)
 
+;; for restclient mode
+(autoload 'restclient-mode "restclient-mode" "Rest mode" t)
+(add-to-list 'auto-mode-alist '("\\.http" . restclient-mode))
 
 ;; for php mode
 (autoload 'php-mode "php-mode" "PHP editing mode" t)
@@ -209,8 +212,8 @@
 (require 'ensime)
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (put 'scroll-left 'disabled nil)
-;; (setq ensime-startup-notification nil)
-;; (setq ensime-startup-snapshot-notification nil)
+(setq ensime-startup-notification nil)
+(setq ensime-startup-snapshot-notification nil)
 
 
 
@@ -334,14 +337,14 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" default)))
+	("eb0a314ac9f75a2bf6ed53563b5d28b563eeba938f8433f6d1db781a47da1366" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" default)))
  '(global-auto-complete-mode t)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
+	(dracula-theme company-restclient use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -35,12 +35,7 @@ Plugin {
         }
         menu {
             name = Computer
-            icon = computer
-            item {
-                name = Terminal
-                icon = terminal
-                action = gnome-terminal
-            }
+            icon = start-here
             item {
                 name = Lock Display
                 icon = system-lock-screen
@@ -73,45 +68,6 @@ Plugin {
     }
 }
 Plugin {
-    type = launchbar
-    config {
-        button {
-            icon = file-manager
-            tooltip = File Manager
-            action = nautilus
-        }
-        button {
-            icon = terminal
-            tooltip = Terminal
-            action = gnome-terminal
-        }
-        button {
-            icon = web-browser
-            tooltip = Web Browser
-            action = firefox
-        }
-    }
-}
-Plugin {
-    type = space
-    config {
-        size = 15
-    }
-}
-Plugin {
-    type = wincmd
-    config {
-        icon = gnome-fs-desktop
-        tooltip = Left click to iconify all windows. Middle click to shade them.
-    }
-}
-Plugin {
-    type = space
-    config {
-        size = 15
-    }
-}
-Plugin {
     type = taskbar
     expand = true
     config {
@@ -119,7 +75,7 @@ Plugin {
         ShowMapped = true
         ShowAllDesks = false
         tooltips = true
-        IconsOnly = true
+        IconsOnly = false
         MaxTaskWidth = 150
     }
 }
@@ -144,24 +100,6 @@ Plugin {
     }
 }
 Plugin {
-    type = net
-    expand = false
-    padding = 0
-    config {
-        interface = eth0
-        TxLimit = 20
-        RxLimit = 190
-        TxColor = violet
-        RxColor = blue
-    }
-}
-Plugin {
-    type = space
-    config {
-        size = 10
-    }
-}
-Plugin {
     type = tray
 }
 Plugin {
@@ -180,33 +118,4 @@ Plugin {
         ClockFmt = %a %T %x
     }
 }
-Plugin {
-    type = icons
-    config {
-        DefaultIcon = /usr/share/fbpanel/images/default.xpm
-        application {
-            icon = gnome-terminal
-            ClassName = XTerm
-        }
-        application {
-            icon = gnome-terminal
-            ClassName = mlterm
-        }
-        application {
-            icon = gnome-terminal
-            ClassName = URxvt
-        }
-        application {
-            icon = gnome-emacs
-            ClassName = Emacs
-        }
-        application {
-            icon = mozilla-firefox
-            ClassName = Firefox-bin
-        }
-        application {
-            icon = mozilla-firefox
-            ClassName = Firefox
-        }
-    }
-}
+
