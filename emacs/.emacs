@@ -217,6 +217,17 @@
 (setq ensime-startup-notification nil)
 (setq ensime-startup-snapshot-notification nil)
 
+;; cedet
+(require 'cedet)
+(global-ede-mode 1)
+(global-semantic-idle-scheduler-mode t)
+(global-semantic-idle-completions-mode t)
+(global-semantic-decoration-mode t)
+(global-semantic-highlight-func-mode t)
+(global-semantic-show-unmatched-syntax-mode t)
+(add-hook 'php-mode-hook '(lambda()
+							(setq ac-sources (append '(ac-source-semantic) ac-sources))))
+
 
 
 ;; winner mode
@@ -228,6 +239,7 @@
 (global-auto-complete-mode t)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict/")
+(setq ac-comphist-file (expand-file-name "~/.emacs.d/ac-comphist.dat"))
 (ac-config-default)
 (setq ac-auto-start 1)
 (setq ac-auto-show-menu 0.1)
