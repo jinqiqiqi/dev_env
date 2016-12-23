@@ -12,6 +12,12 @@
 ;; ******************* package info *******************
 
 (require 'package)
+;; (add-to-list 'package-archives
+;; 	'("marmalade". "https://marmalade-repo.org/packages/")
+;;	t)
+;; (add-to-list 'package-archives
+;;	'("milkbox". "http://melpa.milkbox.net/packages/")
+;; 	t)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 						 ("org" . "http://orgmode.org/elpa/")
 						 ("melpa" . "https://melpa.org/packages/")
@@ -26,6 +32,9 @@
 
 ;; load path settings
 (add-to-list 'load-path "~/.emacs.d/elpa/")
+
+;; enable which function mode
+(which-function-mode t)
 
 ;; ******************* time settings *******************
 (size-indication-mode 0)
@@ -50,8 +59,8 @@
 
 
 ;; ******************* display and encoding *******************
-;; (set-default-font "DejaVu Sans Mono-14")
-(set-default-font "Monaco-14")
+(set-default-font "DejaVu Sans Mono-11")
+;; (set-default-font "Monaco-14")
 
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
@@ -124,6 +133,7 @@
 
 ;; ******************* auto hightlight symbol *******************
 (require 'auto-highlight-symbol)
+(auto-highlight-symbol-mode t)
 (global-auto-highlight-symbol-mode t)
 (ahs-set-idle-interval 0.5)
 
@@ -156,7 +166,6 @@
 	(package-refresh-contents)
 	(package-install 'ac-php )
 	)
-
 ;; php settings
 
 ;; settings for xdebug
@@ -175,7 +184,7 @@
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
-(setq ac-php-debug-flag nil)
+(setq ac-php-debug-flag t)
 (add-hook 'php-mode-hook
 	'(lambda ()
 	   (auto-complete-mode t)
@@ -205,6 +214,7 @@
 ;; settings for exec path
 (setq exec-path (append exec-path (list "/usr/local/bin/")))
 (require 'scala-mode)
+
 
 ;; (use-package ensime
 ;;  			 :ensure t
@@ -284,6 +294,8 @@
 (global-set-key (kbd "M-g u") 'helm-gtags-update-tags)
 (global-set-key (kbd "M-g s") 'helm-gtags-find-symbol)
 
+
+
 ;; projectile mode
 (projectile-mode t)
 (projectile-global-mode)
@@ -324,13 +336,13 @@
 	  (quote (("i" "Inbox" entry (file "~/MEGA/Public/TODOs/inbox.org")
 			   "* TODO %? %^G\n%U\n%a\n")
 			  ("n" "Note" entry (file+datetree "~/MEGA/Public/TODOs/note.org")
-			   "* %? %^G\n%U\n %i\n %a\n")
+			   "* %? %^G\n%U\n %i\n%a\n")
 			  ("t" "Task" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Tasks")
-			   "* TODO %? %^G\n%T\n")
+			   "* TODO %? %^G\n%T\n%a\n")
 			  ("d" "Idea" entry (file+headline "~/MEGA/Public/TODOs/task.org" "Ideas")
-			   "* TODO %? %^G\n%T\n")
+			   "* TODO %? %^G\n%T\n%a\n")
 			  ("p" "Project" entry (file "~/MEGA/Public/TODOs/project.org")
-			   "* TODO %? %^G:Proj:\n%T\n")
+			   "* TODO %? %^G:Proj:\n%T\n\a\n")
 			  ("j" "Journal" entry (file+headline "~/MEGA/Public/TODOs/finished.org" "Journal")
 			   "* %? %^G\n%T\n%a\n")
 			  )))
@@ -364,7 +376,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(cssh ac-js2 company-restclient typescript-mode use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
+	(use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
