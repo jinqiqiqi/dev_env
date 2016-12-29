@@ -220,13 +220,11 @@
 ;;  			 :ensure t
 ;;  			 :pin melpa-stable)
 (require 'ensime)
-;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (add-hook 'scala-mode-hook 'scala-ensime-hook)
-
 (defun scala-ensime-hook ()
   (interactive)
   (yas-minor-mode-on t)
-  (auto-complete-mode -1)
+  (auto-complete-mode t)
   (global-auto-complete-mode -1)
   (ensime-scala-mode-hook))
 
@@ -284,6 +282,11 @@
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+;; navigation for buffers
+(global-set-key (kbd "M-]") 'next-buffer)
+(global-set-key (kbd "M-[") 'previous-buffer)
+(global-set-key (kbd "M-\\") 'helm-mini)
 
 ;; gtags and helm-gtags
 (gtags-mode t)								
