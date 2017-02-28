@@ -33,6 +33,8 @@
 ;; load path settings
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
+(setq max-lisp-eval-depth 1000000)
+
 ;; enable which function mode
 (which-function-mode t)
 
@@ -190,6 +192,10 @@
 	   (auto-complete-mode t)
 	   (require 'ac-php)
 	   (setq ac-sources '(ac-source-php) )
+	   (setq indent-tabs-mode nil)
+	   (setq c-basic-offset 4)
+	   (setq php-template-compatibility nil)
+	   (subword-mode 1)
 	   (yas-global-mode 1)
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
@@ -209,6 +215,16 @@
 ;; 		(message "No Symbol selected")
 ;; 	  (browse-url (concat "http://php.net/manual-look.php?scope=quickref&pattern="
 ;;						   (symbol-name symbol))))))
+(defun bs-web-mode-hook()
+  (local-set-key '[backtab] 'indent-relative)
+  (setq indent-tabs-mode nil)
+  (setq web-mode-markup-indent-offset 4
+		web-mode-css-indent-offset 4
+		web-mode-code-indent-offset 4))
+
+(add-hook 'web-mode-hook 'bs-web-mode-hook)
+
+
 
 ;; for scala settings
 ;; settings for exec path
@@ -379,7 +395,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
+	(web-mode use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
