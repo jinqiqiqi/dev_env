@@ -186,17 +186,30 @@
 
 ;; It seems the blow settings are not working for some reason.
 (require 'php-mode)
-(setq ac-php-debug-flag t)
+(setq ac-php-debug-flag nil)
+
+(add-hook 'php-mode-hook 'php-enable-psr2-coding-style)
+
 (add-hook 'php-mode-hook
 	'(lambda ()
 	   (auto-complete-mode t)
 	   (require 'ac-php)
-	   (setq ac-sources '(ac-source-php) )
-	   (setq indent-tabs-mode nil)
-	   (setq c-basic-offset 4)
-	   (setq php-template-compatibility nil)
-	   (subword-mode 1)
+	   (setq ac-sources '(ac-source-php))
 	   (yas-global-mode 1)
+	   
+
+ 	   (setq-default indent-tabs-mode 1Gnil)
+	   (setq-default tab-width 4)
+	   (setq c-basic-offset 4)
+	   (setq c-basic-indent 4)
+	   (c-set-offset 'case-label '+)
+	   (c-set-offset 'arglist-cont-nonempty' 4)
+	   (c-set-style "linux")
+	   (setq php-template-compatibility t)
+
+	   (setq indent-tabs-mode nil)
+	   (setq tab-width 4)
+	   
 	   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
 	   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
 	   ))
@@ -395,7 +408,7 @@
  '(make-backup-files nil)
  '(package-selected-packages
    (quote
-	(web-mode use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
+	(use-package highlight-symbol popup-complete php+-mode php-auto-yasnippets php-completion geben sdcv plantuml-mode ac-emmet ac-helm ac-html-angular ac-php angular-mode angular-snippets atom-dark-theme atom-one-dark-theme auto-compile auto-complete auto-highlight-symbol bash-completion better-shell c-emmet cal-china-x chinese-wbim company-php company-shell company-web composer ctags docker dockerfile-mode ecb emacsql-mysql expand-region feature-mode flycheck flymake-shell ggtags git git-command gtags helm helm-cscope helm-emmet helm-flycheck helm-git helm-git-files helm-gtags helm-ls-git helm-projectile heroku ido-vertical-mode iedit magit magit-gitflow magit-svn maker-mode monokai-theme ng2-mode nginx-mode php-company php-mode phpunit pomodoro projectile quickrun redis restclient restclient-helm slack smartparens sublime-themes))))
 '(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

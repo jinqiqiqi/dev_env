@@ -113,14 +113,15 @@
 
 (setq startup-programs
 	  '(
-		("fbpanel")
-		("fcitx")
+		; ("fbpanel")
+		; ("cairo-dock")
+		; ("fcitx")
 		("nm-applet")
 		("megasync")
-		("skypeforlinux")
+		("/usr/bin/skype")
 		("slack")
 		("synapse")
-		("synergy")
+		; ("synergy")
 		("teamviewer")
 		("xscreensaver")
 		))
