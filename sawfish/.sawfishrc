@@ -79,7 +79,10 @@
 		   "Super-U" '(eric-joe "shutter &" "Shutter"))
 
 (bind-keys global-keymap
-		   "Super-P" '(eric-joe "gimp &" "GIMP"))
+		   "Super-P" '(eric-joe "sudo shutdown -P now" "关机。。。"))
+
+(bind-keys global-keymap
+		   "Super-m" '(eric-joe "thunar ~/Videos &" "File Manager"))
 
 (bind-keys global-keymap
 		   "Super-L" '((system "xscreensaver-command -activate & ")
@@ -116,6 +119,11 @@
 		; ("fbpanel")
 		; ("cairo-dock")
 		; ("fcitx")
+		("fbpanel")
+		;; ("fcitx")
+		("ibus-daemon")
+		("synergy")
+		("synapse")
 		("nm-applet")
 		("megasync")
 		("/usr/bin/skype")
@@ -126,10 +134,10 @@
 		("xscreensaver")
 		))
 
-(mapc (lambda (program)
-		(apply start-process (make-process standard-output) program))
-	  startup-programs)
-
-(add-hook 'before-exit-hook
-		  (lambda ()
-			(mapc stop-process (active-processes))))
+;; (mapc (lambda (program)
+;; 		(apply start-process (make-process standard-output) program))
+;; 	  startup-programs)
+;; 
+;; (add-hook 'before-exit-hook
+;; 		  (lambda ()
+;; 			(mapc stop-process (active-processes))))
