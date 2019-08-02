@@ -11,6 +11,7 @@
 (require 'jump-or-exec)
 (require 'rep.io.timers)
 
+
 ;; display message
 (defun eric-display-msg (message &optional seconds)
   "display message for seconds seconds and make the message disappeared."
@@ -55,7 +56,7 @@
 		   "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
 
 (bind-keys global-keymap
-		   "Super-E" '(eric-joe "emacs &" "@ Emacs"))
+		   "Super-E" '(eric-joe "evolution &" "Evolution"))
 
 (bind-keys global-keymap
 		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox"))
@@ -67,10 +68,10 @@
 		   "Super-B" '(eric-joe "libreoffice &" "LibreOffice"))
 
 (bind-keys global-keymap
-		   "Super-I" '(eric-joe "xmind &" ".xmind"))
+		   "Super-I" '(eric-joe "vivaldi-stable &" "Vivaldi"))
 
 (bind-keys global-keymap
-		   "Super-Y" '(eric-joe "synergy &" "Synergy"))
+		   "Super-Y" '(eric-joe "quicksynergy &" "Synergy"))
 
 (bind-keys global-keymap
 		   "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
@@ -109,29 +110,23 @@
 		   "k" '(jump-or-exec "Skype" "skype &" t)
 		   "b" '(jump-or-exec "LibreOffice" "libreoffice &" t)
 		   "f" '(jump-or-exec "Firefox" "firefox &" t)
-		   "y" '(jump-or-exec "Synergy" "synergy &" t)
+		   "y" '(jump-or-exec "Synergy" "quicksynergy &" t)
 		   "v" '(jump-or-exec "TeamViewer" "teamviewer &" t)
 		   "r" '(jump-or-exec "GNOME Commander" "gnome-commander &" t)
 		   )
 
 (setq startup-programs
 	  '(
-		; ("fbpanel")
+		;("fbpanel")
+ 		("nm-applet")
 		; ("cairo-dock")
-		; ("fcitx")
-		("fbpanel")
-		;; ("fcitx")
 		("ibus-daemon")
-		("synergy")
-		("synapse")
-		("nm-applet")
-		("megasync")
-		("/usr/bin/skype")
-		("slack")
-		("synapse")
-		; ("synergy")
-		("teamviewer")
-		("xscreensaver")
+ 		("quicksynergy")
+ 		("megasync")
+; 		("/usr/bin/skype")
+ 		;("~/opt/electronic-wechat-linux-x64/electronic-wechat")
+ 		("synapse")
+ 		;("teamviewer")
 		))
 
 ;; (mapc (lambda (program)
