@@ -32,7 +32,7 @@
     (setq res-str (get-output-stream-string res-stream))
     (string-match exps res-str)
     (eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
-    
+
 ;; eric's jump or exec function
 (defun eric-joe (app keywords)
   (interactive)
@@ -65,7 +65,7 @@
            "Super-D" '(eric-joe "stardict &" "StarDict"))
 
 (bind-keys global-keymap
-           "Super-B" '(eric-joe "libreoffice &" "LibreOffice"))
+           "Super-B" '(eric-joe "brave &" "Brave"))
 
 (bind-keys global-keymap
            "Super-I" '(eric-joe "vivaldi-stable &" "Vivaldi"))
@@ -123,6 +123,7 @@
         ("megasync")
         ("synapse")
         ("teamviewer")
+        ("fcitx5")
         ))
 
 (mapc (lambda (program)
