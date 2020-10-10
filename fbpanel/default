@@ -5,7 +5,7 @@ Global {
     widthtype = percent
     width = 100
     height = 24
-    transparent = false
+    transparent = true
     tintcolor = #ffffff
     alpha = 28
     setdocktype = true
@@ -91,6 +91,7 @@ Plugin {
     padding = 2
     config {
         ShowSwap = false
+        Color = red
     }
 }
 Plugin {
@@ -114,8 +115,7 @@ Plugin {
         ShowSeconds = true
         HoursView = 24
         TooltipFmt = %A %x
-        ShowCalendar = false
+        ShowCalendar = true
         ClockFmt = %a %T %x
     }
 }
-
