@@ -2,9 +2,9 @@
 ;; (add-hook 'after-initialization-hook pager t)
 
 (setq load-path (cons "/usr/share/sawfish/lisp/sawfish/wm/commands/"
-					  load-path))
-;; (require 'backgrounds)
-;; (add-hook 'after-initialization-hook workspace-background-hook)
+                      load-path))
+; (require 'backgrounds)
+; (add-hook 'after-initialization-hook set-background-hook)
 ;; (add-hook 'enter-workspace-hook workspace-background-hook)
 ;; (add-hook 'workspace-state-change-hook workspace-background-hook)
 
@@ -19,120 +19,116 @@
   (display-message message)
   (make-timer
    (lambda ()
-	 (display-message))
+     (display-message))
    (or seconds 3)))
 
 ;; volume change function
 (defun eric-volume (ops exps)
   (interactive)
   (let* ((res-stream (make-string-output-stream))
-		 (proc (make-process res-stream))
-		 (res-str))
-	(call-process proc nil "amixer" "sset" "Master" ops)
-	(setq res-str (get-output-stream-string res-stream))
-	(string-match exps res-str)
-	(eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
-	
+         (proc (make-process res-stream))
+         (res-str))
+    (call-process proc nil "amixer" "sset" "Master" ops)
+    (setq res-str (get-output-stream-string res-stream))
+    (string-match exps res-str)
+    (eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
+    
 ;; eric's jump or exec function
 (defun eric-joe (app keywords)
   (interactive)
   (jump-or-exec keywords
-				 (lambda()
-				   (eric-display-msg (concat "starting " keywords "...." ))
-				   (system app)
-				   "sleep 10")
-				 (lambda(wind)
-				   (display-window wind)
-				   )))
+                 (lambda()
+                   (eric-display-msg (concat "starting " keywords "...." ))
+                   (system app)
+                   "sleep 10")
+                 (lambda(wind)
+                   (display-window wind)
+                   )))
 
 ;; short keys to jump or exec applications.
 (bind-keys global-keymap
-		   "Super-O" '(eric-joe "opera &" "Opera"))
+           "Super-O" '(eric-joe "alacritty &" "Alacritty"))
 
 (bind-keys global-keymap
-		   "Super-M" '(eric-joe "gnome-terminal &" ":~"))
+           "Super-A" '(eric-joe "alacritty &" "@"))
 
 (bind-keys global-keymap
-		   "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
+           "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
 
 (bind-keys global-keymap
-		   "Super-E" '(eric-joe "evolution &" "Evolution"))
+           "Super-E" '(eric-joe "evolution &" "Evolution"))
 
 (bind-keys global-keymap
-		   "Super-F" '(eric-joe "firefox &" "Mozilla Firefox"))
+           "Super-F" '(eric-joe "flameshot &" "Flameshot"))
 
 (bind-keys global-keymap
-		   "Super-D" '(eric-joe "stardict &" "StarDict"))
+           "Super-D" '(eric-joe "stardict &" "StarDict"))
 
 (bind-keys global-keymap
-		   "Super-B" '(eric-joe "libreoffice &" "LibreOffice"))
+           "Super-B" '(eric-joe "libreoffice &" "LibreOffice"))
 
 (bind-keys global-keymap
-		   "Super-I" '(eric-joe "vivaldi-stable &" "Vivaldi"))
+           "Super-I" '(eric-joe "vivaldi-stable &" "Vivaldi"))
 
 (bind-keys global-keymap
-		   "Super-Y" '(eric-joe "quicksynergy &" "Synergy"))
+           "Super-Y" '(eric-joe "synergy &" "Synergy"))
 
 (bind-keys global-keymap
-		   "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
+           "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
 
 (bind-keys global-keymap
-		   "Super-U" '(eric-joe "shutter &" "Shutter"))
+           "Super-U" '(eric-joe "shutter &" "Shutter"))
 
 (bind-keys global-keymap
-		   "Super-P" '(eric-joe "sudo shutdown -P now" "关机。。。"))
+           "Super-P" '(eric-joe "sudo shutdown -P now" "关机。。。"))
 
 (bind-keys global-keymap
-		   "Super-m" '(eric-joe "thunar ~/Videos &" "File Manager"))
+           "Super-m" '(eric-joe "thunar ~/Videos &" "File Manager"))
 
 (bind-keys global-keymap
-		   "Super-L" '((system "xscreensaver-command -activate & ")
-					   (eric-display-msg "Locking workstation...")))
+           "Super-L" '((system "xscreensaver-command -activate & ")
+                       (eric-display-msg "Locking workstation...")))
 
 
 ;; bind keys for volume adjustment.
 (bind-keys global-keymap
-		   "Super-[" '(eric-volume "5%-" ".*?\\[([^%]*%)\\].*"))
+           "Super-[" '(eric-volume "5%-" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "Super-]" '(eric-volume "5%+" ".*?\\[([^%]*%)\\].*"))
+           "Super-]" '(eric-volume "5%+" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
-		   "Super-\\" '(eric-volume "toggle" ".*\\[(on|off)\\].*"))
+           "Super-\\" '(eric-volume "toggle" ".*\\[(on|off)\\].*"))
 
 ;; application keymacros
 (define apps-keymap (make-keymap))
 (bind-keys global-keymap "Super-j" apps-keymap)
 (bind-keys apps-keymap
-		   "o" '(jump-or-exec "Opera" "opera &" t)
-		   "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate &" t)
-		   "t" '(jump-or-exec ":~" "gnome-terminal &" t)
-		   "d" '(jump-or-exec "StarDict" "stardict &" t)
-		   "e" '(jump-or-exec "Emacs" "emacs &" t)
-		   "k" '(jump-or-exec "Skype" "skype &" t)
-		   "b" '(jump-or-exec "LibreOffice" "libreoffice &" t)
-		   "f" '(jump-or-exec "Firefox" "firefox &" t)
-		   "y" '(jump-or-exec "Synergy" "quicksynergy &" t)
-		   "v" '(jump-or-exec "TeamViewer" "teamviewer &" t)
-		   "r" '(jump-or-exec "GNOME Commander" "gnome-commander &" t)
-		   )
+           "o" '(jump-or-exec "Opera" "opera &" t)
+           "l" '(jump-or-exec "xscreen" "xscreensaver-command -activate &" t)
+           "t" '(jump-or-exec ":~" "gnome-terminal &" t)
+           "d" '(jump-or-exec "StarDict" "stardict &" t)
+           "e" '(jump-or-exec "Emacs" "emacs &" t)
+           "k" '(jump-or-exec "Skype" "skype &" t)
+           "b" '(jump-or-exec "LibreOffice" "libreoffice &" t)
+           "f" '(jump-or-exec "Firefox" "firefox &" t)
+           "y" '(jump-or-exec "Synergy" "quicksynergy &" t)
+           "v" '(jump-or-exec "TeamViewer" "teamviewer &" t)
+           "r" '(jump-or-exec "GNOME Commander" "gnome-commander &" t)
+           )
 
 (setq startup-programs
-	  '(
-		;("fbpanel")
- 		("nm-applet")
-		; ("cairo-dock")
-		("ibus-daemon")
- 		("quicksynergy")
- 		("megasync")
-; 		("/usr/bin/skype")
- 		;("~/opt/electronic-wechat-linux-x64/electronic-wechat")
- 		("synapse")
- 		;("teamviewer")
-		))
+      '(
+        ("fbpanel")
+        ("nm-applet")
+        ("synergy")
+        ("megasync")
+        ("synapse")
+        ("teamviewer")
+        ))
 
-;; (mapc (lambda (program)
-;; 		(apply start-process (make-process standard-output) program))
-;; 	  startup-programs)
-;; 
-;; (add-hook 'before-exit-hook
-;; 		  (lambda ()
-;; 			(mapc stop-process (active-processes))))
+(mapc (lambda (program)
+      (apply start-process (make-process standard-output) program))
+      startup-programs)
+
+(add-hook 'before-exit-hook
+          (lambda ()
+            (mapc stop-process (active-processes))))
