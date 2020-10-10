@@ -5,9 +5,9 @@ Global {
     widthtype = percent
     width = 100
     height = 24
-    transparent = true
+    Transparent = true
     tintcolor = #ffffff
-    alpha = 28
+    alpha = 128
     setdocktype = true
     setpartialstrut = true
     autohide = false
@@ -87,28 +87,21 @@ Plugin {
 }
 Plugin {
     type = mem
-    expand = false
-    padding = 2
     config {
         ShowSwap = false
-        Color = red
+        Color = green
     }
 }
 Plugin {
     type = cpu
     config {
-        Color = green
+        Color = red
     }
 }
 Plugin {
     type = tray
 }
-Plugin {
-    type = space
-    config {
-        size = 10
-    }
-}
+
 Plugin {
     type = tclock
     config {

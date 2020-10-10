@@ -50,7 +50,7 @@
            "Super-O" '(eric-joe "alacritty &" "Alacritty"))
 
 (bind-keys global-keymap
-           "Super-A" '(eric-joe "alacritty &" "@"))
+           "Super-A" '(eric-joe "alacritty &" "Alacritty"))
 
 (bind-keys global-keymap
            "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
