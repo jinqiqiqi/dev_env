@@ -1,8 +1,8 @@
 ;; Sawfish user customization -- do not edit by hand!
 ;; Use the configurator instead.
-;; sawfish version 1.12.90, written Sat Oct 10 08:49:58 2020
+;; sawfish version 1.12.90, written Mon Oct 12 09:17:19 2020
 
-(custom-set-keymap (quote global-keymap) (quote (keymap (quit . "C-S-ESC") (run-application . "M-F2") (restart . "Super-r") (toggle-desktop . "M-C-d") (cycle-windows . "Super-TAB") (cabinet-switch . "M-TAB"))))
+(custom-set-keymap (quote global-keymap) (quote (keymap (quit . "C-S-ESC") (run-application . "M-F2") (restart . "Super-R") (toggle-desktop . "M-C-d") (cycle-windows . "Super-TAB") (cabinet-switch . "M-TAB"))))
 (custom-set-typed-variable (quote fade-enable) (quote t) (quote boolean))
 (custom-set-typed-variable (quote shadow-blue) (quote 0) (quote symbol))
 (custom-set-typed-variable (quote shadow-green) (quote 0) (quote symbol))
