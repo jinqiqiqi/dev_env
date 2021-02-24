@@ -71,7 +71,7 @@
            "Super-I" '(eric-joe "vivaldi-stable &" "Vivaldi"))
 
 (bind-keys global-keymap
-           "Super-Y" '(eric-joe "synergy &" "Synergy"))
+           "Super-Y" '(eric-joe "barrier &" "barrier"))
 
 (bind-keys global-keymap
            "Super-V" '(eric-joe "teamviewer &" "Computers & Contacts"))
@@ -79,8 +79,8 @@
 (bind-keys global-keymap
            "Super-U" '(eric-joe "shutter &" "Shutter"))
 
-(bind-keys global-keymap
-           "Super-P" '(eric-joe "sudo shutdown -P now" "关机。。。"))
+;; (bind-keys global-keymap
+;;            "Super-P" '(eric-joe "sudo shutdown -P now" "关机。。。"))
 
 (bind-keys global-keymap
            "Super-m" '(eric-joe "thunar ~/Videos &" "File Manager"))
@@ -110,7 +110,7 @@
            "k" '(jump-or-exec "Skype" "skype &" t)
            "b" '(jump-or-exec "LibreOffice" "libreoffice &" t)
            "f" '(jump-or-exec "Firefox" "firefox &" t)
-           "y" '(jump-or-exec "Synergy" "quicksynergy &" t)
+           "y" '(jump-or-exec "Synergy" "barrier &" t)
            "v" '(jump-or-exec "TeamViewer" "teamviewer &" t)
            "r" '(jump-or-exec "GNOME Commander" "gnome-commander &" t)
            )
@@ -119,10 +119,11 @@
       '(
         ("fbpanel")
         ("nm-applet")
-        ("synergy")
+        ("barrier")
+        ("/home/ek/Applications/Qv2ray.v2.7.0-pre2.linux-x64.AppImage")
         ("megasync")
         ("synapse")
-        ("teamviewer")
+        ("xfsettingsd")
         ("fcitx5")
         ))
 

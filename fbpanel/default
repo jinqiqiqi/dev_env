@@ -108,7 +108,7 @@ Plugin {
         ShowSeconds = true
         HoursView = 24
         TooltipFmt = %A %x
-        ShowCalendar = true
-        ClockFmt = %a %T %x
+        ShowCalendar = false
+        ClockFmt = %a %x %H:%M
     }
 }
