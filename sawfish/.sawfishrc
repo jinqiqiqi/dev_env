@@ -117,14 +117,16 @@
 
 (setq startup-programs
       '(
+        ("picom --config ~/.config/picom/picom.conf")
         ("fbpanel")
         ("nm-applet")
         ("barrier")
-        ("/home/ek/Applications/Qv2ray.v2.7.0-pre2.linux-x64.AppImage")
+        ("/home/kinch/Applications/Qv2ray.v2.7.0-pre2.linux-x64.AppImage")
         ("megasync")
         ("synapse")
         ("xfsettingsd")
         ("fcitx5")
+        ("xscreensaver")
         ))
 
 (mapc (lambda (program)

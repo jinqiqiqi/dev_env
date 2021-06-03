@@ -7,7 +7,7 @@ Global {
     height = 24
     Transparent = true
     tintcolor = #ffffff
-    alpha = 128
+    alpha = 50
     setdocktype = true
     setpartialstrut = true
     autohide = false
@@ -27,7 +27,7 @@ Plugin {
 Plugin {
     type = menu
     config {
-        IconSize = 22
+        IconSize = 32
         icon = start-here
         systemmenu {
         }
