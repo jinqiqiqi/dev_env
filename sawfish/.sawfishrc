@@ -33,6 +33,19 @@
     (string-match exps res-str)
     (eric-display-msg (concat "Volume: " (expand-last-match "\\1")) 5)))
 
+; eric-bright
+;; volume change function
+(defun eric-bright (ops exps)
+  (interactive)
+  (let* ((res-stream (make-string-output-stream))
+         (proc (make-process res-stream))
+         (res-str))
+    (call-process proc nil "brightnessctl" "s" ops)
+    (setq res-str (get-output-stream-string res-stream))
+    (string-match exps res-str)
+    (eric-display-msg (concat "Brightness: " (expand-last-match "\\1")) 5)))
+
+
 ;; eric's jump or exec function
 (defun eric-joe (app keywords)
   (interactive)
@@ -47,10 +60,10 @@
 
 ;; short keys to jump or exec applications.
 (bind-keys global-keymap
-           "Super-O" '(eric-joe "alacritty &" "Alacritty"))
+           "Super-O" '(eric-joe "alacritty &" "fish"))
 
 (bind-keys global-keymap
-           "Super-A" '(eric-joe "alacritty &" "Alacritty"))
+           "Super-A" '(eric-joe "alacritty &" "fish"))
 
 (bind-keys global-keymap
            "Super-T" '(eric-joe "thunderbird &" "Thunderbird"))
@@ -95,6 +108,12 @@
            "Super-[" '(eric-volume "5%-" ".*?\\[([^%]*%)\\].*"))
 (bind-keys global-keymap
            "Super-]" '(eric-volume "5%+" ".*?\\[([^%]*%)\\].*"))
+
+(bind-keys global-keymap
+           "Super--" '(eric-bright "5%-" ".*?\\(([^%]*%)\\).*"))
+(bind-keys global-keymap
+           "Super-=" '(eric-bright "5%+" ".*?\\(([^%]*%)\\).*"))
+
 (bind-keys global-keymap
            "Super-\\" '(eric-volume "toggle" ".*\\[(on|off)\\].*"))
 
@@ -117,8 +136,9 @@
 
 (setq startup-programs
       '(
-        ("picom --config ~/.config/picom/picom.conf")
         ("fbpanel")
+        ("picom --config ~/.config/picom/picom.conf")
+        ; ("battray")
         ("nm-applet")
         ("barrier")
         ("/home/kinch/Applications/Qv2ray.v2.7.0-pre2.linux-x64.AppImage")
@@ -127,6 +147,8 @@
         ("xfsettingsd")
         ("fcitx5")
         ("xscreensaver")
+        ("flameshot")
+        ("sparkleshare")
         ))
 
 (mapc (lambda (program)
